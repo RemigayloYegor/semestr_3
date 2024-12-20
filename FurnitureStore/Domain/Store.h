@@ -26,7 +26,22 @@ namespace FurnitureStore
         /**
         // @param Статистика продаж
         */
-        std::unordered_map<std::string, int> sales;      
+        std::unordered_map<std::string, int> sales;
+        /**
+        // @param Записи о продажах
+        */
+        struct SaleRecord
+        {
+            std::string customerName;
+            std::string furnitureName;
+            std::chrono::system_clock::time_point saleDate;
+
+            SaleRecord(const std::string& customer, const std::string& furniture, std::chrono::system_clock::time_point date)
+                : customerName{customer}, furnitureName{furniture}, saleDate{date} {}
+
+            std::string getDetails() const;
+        };
+        std::vector<SaleRecord> saleRecords;
     public:
         /**
          * @brief Добавляет новый предмет мебели в инвентарь
@@ -42,9 +57,10 @@ namespace FurnitureStore
         
         /**
          * @brief Продает предмет мебели
-         * @param name Название мебели для продажи
+         * @param customerName Имя клиента
+         * @param furnitureName Название мебели для продажи
          */
-        void sellFurniture(const std::string& name);
+        void sellFurniture(const std::string& customerName, const std::string& furnitureName);
         
         /**
          * @brief Отображает статистику продаж
@@ -63,5 +79,10 @@ namespace FurnitureStore
          * @brief Отображает все заказы
          */
         void displayOrders() const;
+
+        /**
+         * @brief Отображает все записи о продажах
+         */
+        void displaySaleRecords() const;
     };
 }

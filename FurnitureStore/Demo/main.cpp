@@ -13,8 +13,8 @@ int main()
     store.displayInventory();
 
     std::cout << "\n=== Продажа мебели ===\n";
-    store.sellFurniture("Стул");
-    store.sellFurniture("Диван");
+    store.sellFurniture("Клиент1", "Стул");
+    store.sellFurniture("Клиент1", "Диван");
 
     std::cout << "\n=== Статистика продаж ===\n";
     store.displaySales();

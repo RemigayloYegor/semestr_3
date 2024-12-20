@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
-#include <ctime>
+#include <chrono>
+#include <memory>
 
 namespace FurnitureStore
 {
@@ -15,7 +16,7 @@ namespace FurnitureStore
         /**  
         // @param Название мебели
         */
-        std::string furnitureName;   
+        std::unique_ptr<std::string> furnitureName;   
         /** 
         // @param Итоговая цена
         */
@@ -23,7 +24,7 @@ namespace FurnitureStore
         /**      
         // @param Дата заказа
         */
-        std::time_t orderDate;       
+        std::chrono::system_clock::time_point orderDate;       
 
     public:
         /**
